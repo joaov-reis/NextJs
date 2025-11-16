@@ -15,7 +15,7 @@ export default function Pagina3(props) {
     return (
         <Layout>
             <Head>
-                <title>Página 3</title>
+                <title>Lista de usuários</title>
             </Head>
             <h1>Usuários</h1>
             {
