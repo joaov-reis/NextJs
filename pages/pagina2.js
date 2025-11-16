@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Layout from '../components/layout';
 
 export async function getStaticProps() {
-  console.log ("getStaticProps");
+  console.log("getStaticProps");
   let user;
   await fetch('https://jsonplaceholder.typicode.com/users/2')
     .then((response) => response.json())

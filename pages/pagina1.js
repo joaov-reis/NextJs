@@ -4,14 +4,14 @@ import Link from 'next/link';
 import Layout from '../components/layout';
 
 export async function getServerSideProps() {
-  console.log ("getServerSideProps");
+  console.log("getServerSideProps");
   let user;
   await fetch("https://jsonplaceholder.typicode.com/users/1")
-  .then(response => response.json())
-  .then(data => {
-    user = data;
-  });
-  return {props: {user}}
+    .then(response => response.json())
+    .then(data => {
+      user = data;
+    });
+  return { props: { user } }
 }
 
 export default function Pagina1(props) {
