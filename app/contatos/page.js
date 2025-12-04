@@ -1,20 +1,20 @@
+//import ContatosSsr from "./ContatosSsr";
+import ContatosSpa from "./ContatosSpa";
+import ContatosHibrido from "./ContatosHibrido";
+
 async function getContatos() {
     let contatos;
     await fetch("https://jsonplaceholder.typicode.com/users")
         .then(response => response.json())
-        .then(data => contatos = data);
+        .then(data => (contatos = data));
     return contatos;
 }
 
 export default async function Contatos() {
-    let results = await getContatos();
 
-    return (
-        <main>
-            <h1>Contatos</h1>
-            {results.map((contato) => {
-                return <p className="m-2" key={contato.id}>{contato.name} - {contato.email}</p>;
-            })}
-        </main>
-    );
+    const contatos = await getContatos();
+
+    //return <ContatosSsr />
+    //return <ContatosSpa />
+    return <ContatosHibrido contatos={contatos} />
 }

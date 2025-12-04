@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <hr />
         <div className="min-h-96">{children}</div>
         <hr />
-        Copyright &copy: 2025 Instituto Infnet
+        Copyright: 2025 Instituto Infnet
       </body>
     </html>
   );
