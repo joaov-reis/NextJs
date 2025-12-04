@@ -1,10 +1,8 @@
-//import ContatosSsr from "./ContatosSsr";
-import ContatosSpa from "./ContatosSpa";
-import ContatosHibrido from "./ContatosHibrido";
+export const revalidate = false; //Gera no build, não revalida nunca (SSG)
 
 async function getContatos() {
     let contatos;
-    await fetch("https://jsonplaceholder.typicode.com/users")
+    await fetch("https://jsonplaceholder.typicode.com/users", {cache: "force-cache"})
         .then(response => response.json())
         .then(data => (contatos = data));
     return contatos;
@@ -12,9 +10,15 @@ async function getContatos() {
 
 export default async function Contatos() {
 
-    const contatos = await getContatos();
+   let results = await getContatos();
 
-    //return <ContatosSsr />
-    //return <ContatosSpa />
-    return <ContatosHibrido contatos={contatos} />
+    return (
+        <main>
+            <h1>Contatos SSR</h1>
+            {results.map((contato) => {
+                return <p className="m-2" key={contato.id}>
+                {contato.name} - {contato.email}</p>;
+            })}
+        </main>
+    );
 }
