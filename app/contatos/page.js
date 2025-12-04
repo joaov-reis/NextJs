@@ -14,7 +14,7 @@ export default async function Contatos() {
 
     return (
         <main>
-            <h1>Contatos SSR</h1>
+            <h1>Contatos ISR</h1>
             {results.map((contato) => {
                 return <p className="m-2" key={contato.id}>
                 {contato.name} - {contato.email}</p>;

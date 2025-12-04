@@ -1,5 +1,5 @@
 //import ContatosSsr from "./ContatosSsr";
-import ContatosSpa from "./ContatosSpa";
+//import ContatosSpa from "./ContatosSpa";
 import ContatosHibrido from "./ContatosHibrido";
 
 async function getContatos() {
