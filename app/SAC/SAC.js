@@ -1,6 +1,6 @@
 "use server"
 
-export async function gravarProduto(estadoAnterior, formData) {
+export async function gravarSAC(estadoAnterior, formData) {
     const nome = formData.get("nome");
     const descricao = formData.get("descricao");
     console.log(nome + " - " + descricao);
