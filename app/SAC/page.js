@@ -28,7 +28,9 @@ export default function SAC() {
           <div className="md:w-2/3">
             <input
               name="nome"
-              value={state.nome}
+              required
+              minLength={3}
+              defaultValue={state?.nome ?? ""}
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
               id="inline-nome"
               type="text"
@@ -48,10 +50,11 @@ export default function SAC() {
           <div className="md:w-2/3">
             <input
               name="email"
-              value={state.email}
+              type="email"
+              required
+              defaultValue={state?.email ?? ""}
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
               id="inline-email"
-              type="text"
             />
           </div>
         </div>
@@ -68,10 +71,13 @@ export default function SAC() {
           <div className="md:w-2/3">
             <input
               name="telefone"
-              value={state.telefone}
+              type="tel"
+              required
+              placeholder="(11) 12345-6789"
+              pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$"
+              defaultValue={state?.telefone ?? ""}
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
               id="inline-telefone"
-              type="text"
             />
           </div>
         </div>
@@ -88,7 +94,8 @@ export default function SAC() {
           <div className="md:w-2/3">
             <input
               name="assunto"
-              value={state.assunto}
+              required
+              defaultValue={state?.assunto ?? ""}
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
               id="inline-assunto"
               type="text"
@@ -108,7 +115,8 @@ export default function SAC() {
           <div className="md:w-2/3">
             <input
               name="mensagem"
-              value={state.mensagem}
+              required
+              defaultValue={state?.mensagem ?? ""}
               className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700"
               id="inline-mensagem"
               type="text"
