@@ -18,12 +18,13 @@ export default async function GraphQLPage() {
     const produto = data.produtos.find((p) => p.id === produtoId);
 
     return (
-        <main>
+        <main className="bg-[#f5f5dc] text-[#5e503f] min-h-screen flex-col text-center p-12">
             {produto ? (
                 <div>
-                    <h2>{produto.title}</h2>
+                    <h2 className="font-bold text-lg">{produto.title}</h2>
                     <p>{produto.body}</p>
                     <Image
+                        className="rounded-lg mx-auto"
                         src="/jaqueline-pelzer-neUW-U0NwCU-unsplash.jpg"
                         alt="Iogurte"
                         width={500}

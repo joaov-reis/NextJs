@@ -6,8 +6,9 @@ export default function SAC() {
   const [state, formAction] = useFormState(gravarSAC, {})
 
   return (
-    <main>
-      <h1>SAC</h1>
+    <main className="bg-[#f5f5dc] text-[#5e503f] flex min-h-screen flex-col text-center items-center p-10">
+      <h1 className="font-black text-xl">SAC - Serviço de atendimento ao consumidor</h1>
+      <p className="text-sm p-2">Teve algum problema com nosso produto ou deseja deixar uma avaliação? Entre em Contato:</p>
       <form
         className="p-3 m-3 bg-gray-100 w-full max-w-sm"
         action={formAction}
