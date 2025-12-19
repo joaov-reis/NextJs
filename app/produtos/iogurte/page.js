@@ -29,8 +29,6 @@ export default async function GraphQLPage() {
                         alt="Iogurte"
                         width={500}
                         height={300}
-                        creditText="Jaqueline Pelzer"
-                        creditLink="https://unsplash.com/photos/stainless-steel-spoon-on-white-ceramic-plate-neUW-U0NwCU"
                     />
                     <figcaption>
                         Foto por <a href="https://unsplash.com/photos/stainless-steel-spoon-on-white-ceramic-plate-neUW-U0NwCU"  target="_blank" rel="noopener noreferrer">

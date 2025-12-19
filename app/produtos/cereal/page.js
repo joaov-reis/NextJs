@@ -29,8 +29,6 @@ export default async function GraphQLPage() {
                         alt="Cereal-Matinal"
                         width={500}
                         height={300}
-                        creditText="D. L. Samuels"
-                        creditLink="https://unsplash.com/photos/a-bowl-full-of-dog-treats-on-a-red-surface-68BiDMSe45U"
                     />
                     <figcaption>
                         Foto por <a href="https://unsplash.com/photos/a-bowl-full-of-dog-treats-on-a-red-surface-68BiDMSe45U" target="_blank" rel="noopener noreferrer">

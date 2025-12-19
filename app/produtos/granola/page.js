@@ -29,8 +29,6 @@ export default async function GraphQLPage() {
                         alt="Granola"
                         width={500}
                         height={300}
-                        creditText="Mayte Baque"
-                        creditLink="https://unsplash.com/photos/a-jar-filled-with-granola-next-to-a-wooden-spoon-LQftwRfGjOM"
                     />
                     <figcaption>
                         Foto por <a href="https://unsplash.com/photos/a-jar-filled-with-granola-next-to-a-wooden-spoon-LQftwRfGjOM"  target="_blank" rel="noopener noreferrer">
