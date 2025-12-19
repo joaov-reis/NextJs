@@ -1,14 +1,30 @@
-import { GraphQLClient } from "graphql-request";
-import Image from "next/image";
-//export const client = new GraphQLClient("http://localhost:3000/api/graphql");
+// import { GraphQLClient } from "graphql-request";
+// export const client = new GraphQLClient("http://localhost:3000/api/graphql");
+// import Image from "next/image";
 
-const endpoint = process.env.NEXT_PUBLIC_SITE_URL + "/api/graphql";
-export const client = new GraphQLClient(endpoint);
+
+// export default async function GraphQLPage() {
+//     const query = `
+//         query {
+//             produtos{
+//                 id
+//                 title
+//                 body
+//             }
+//         }
+//     `;
+//     const data = await client.request(query);
+
+import Image from "next/image";
+export const dynamic = "force-dynamic";
+
+
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
 
 export default async function GraphQLPage() {
     const query = `
         query {
-            produtos{
+            produtos {
                 id
                 title
                 body
@@ -16,7 +32,21 @@ export default async function GraphQLPage() {
         }
     `;
 
-    const data = await client.request(query);
+    const response = await fetch(GRAPHQL_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query }),
+        cache: "no-store", // 🔥 ISSO resolve o erro de deploy
+    });
+
+    if (!response.ok) {
+        throw new Error("Erro ao buscar dados do GraphQL");
+    }
+
+    const { data } = await response.json();
+
     const produtoId = "1"; // ID do post que você quer
     const produto = data.produtos.find((p) => p.id === produtoId);
 
@@ -35,7 +65,7 @@ export default async function GraphQLPage() {
                     />
                     <figcaption>
                         Foto por <a href="https://unsplash.com/photos/a-bowl-full-of-dog-treats-on-a-red-surface-68BiDMSe45U" target="_blank" rel="noopener noreferrer">
-                        D. L. Samuels
+                            D. L. Samuels
                         </a>
                     </figcaption>
                 </div>
