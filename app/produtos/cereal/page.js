@@ -2,7 +2,6 @@
 // export const client = new GraphQLClient("http://localhost:3000/api/graphql");
 // import Image from "next/image";
 
-
 // export default async function GraphQLPage() {
 //     const query = `
 //         query {
@@ -14,10 +13,8 @@
 //         }
 //     `;
 //     const data = await client.request(query);
-
 import Image from "next/image";
 export const dynamic = "force-dynamic";
-
 
 const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
 
@@ -38,17 +35,26 @@ export default async function GraphQLPage() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ query }),
-        cache: "no-store", // 🔥 ISSO resolve o erro de deploy
+        cache: "no-store",
     });
 
-    if (!response.ok) {
-        throw new Error("Erro ao buscar dados do GraphQL");
+    const json = await response.json();
+
+    if (json.errors) {
+        console.error("GraphQL errors:", json.errors);
+        throw new Error("Erro retornado pelo GraphQL");
     }
 
-    const { data } = await response.json();
+    if (!json.data || !json.data.produtos) {
+        console.error("Resposta inesperada:", json);
+        throw new Error("Formato de resposta inválido");
+    }
 
-    const produtoId = "1"; // ID do post que você quer
-    const produto = data.produtos.find((p) => p.id === produtoId);
+
+    const produto = json.data.produtos.find((p) => p.id === "1");
+
+    // const produtoId = "1"; // ID do post que você quer
+    // const produto = data.produtos.find((p) => p.id === produtoId);
 
     return (
         <main className="bg-[#f5f5dc] text-[#5e503f] min-h-screen flex-col text-center p-12">
