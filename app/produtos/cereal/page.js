@@ -1,26 +1,11 @@
 // import { GraphQLClient } from "graphql-request";
-// import Image from "next/image";
 // export const client = new GraphQLClient("http://localhost:3000/api/graphql");
+// const data = await client.request(query);
 
-// export default async function GraphQLPage() {
-//     const query = `
-//         query {
-//             produtos{
-//                 id
-//                 title
-//                 body
-//             }
-//         }
-//     `;
-
-//     const data = await client.request(query);
 import Image from "next/image";
 export const dynamic = "force-dynamic";
 
-const GRAPHQL_URL =
-    process.env.VERCEL
-        ? "http://localhost/api/graphql"
-        : "http://localhost:3000/api/graphql";
+export const GRAPHQL_URL = "https://next-js-projeto-infnet.vercel.app/api/graphql";
 
 export default async function GraphQLPage() {
     const query = `
@@ -35,14 +20,15 @@ export default async function GraphQLPage() {
 
     const response = await fetch(GRAPHQL_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+            "Content-Type": "application/json",
+        },
         body: JSON.stringify({ query }),
-        cache: "no-store",
+        cache: "no-store"
     });
 
     const { data } = await response.json();
-
-    const produtoId = "1"; // ID do post que você quer
+    const produtoId = "1";
     const produto = data.produtos.find((p) => p.id === produtoId);
 
     return (

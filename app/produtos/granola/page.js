@@ -1,23 +1,10 @@
 // import { GraphQLClient } from "graphql-request";
-// import Image from "next/image";
 // export const client = new GraphQLClient("http://localhost:3000/api/graphql");
-
-// export default async function GraphQLPage() {
-//     const query = `
-//         query {
-//             produtos{
-//                 id
-//                 title
-//                 body
-//             }
-//         }
-//     `;
-
-//     const data = await client.request(query);
+// const data = await client.request(query);
 import Image from "next/image";
 export const dynamic = "force-dynamic";
 
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+export const GRAPHQL_URL = "https://next-js-projeto-infnet.vercel.app/api/graphql";
 
 export default async function GraphQLPage() {
     const query = `
@@ -36,16 +23,11 @@ export default async function GraphQLPage() {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ query }),
-        cache: "no-store", // 🔥 ISSO resolve o erro de deploy
+        cache: "no-store",
     });
 
-    if (!response.ok) {
-        throw new Error("Erro ao buscar dados do GraphQL");
-    }
-
     const { data } = await response.json();
-
-    const produtoId = "2"; // ID do post que você quer
+    const produtoId = "2";
     const produto = data.produtos.find((p) => p.id === produtoId);
 
     return (
