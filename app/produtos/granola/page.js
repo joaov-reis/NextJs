@@ -1,6 +1,9 @@
 import { GraphQLClient } from "graphql-request";
 import Image from "next/image";
-export const client = new GraphQLClient("http://localhost:3000/api/graphql");
+//export const client = new GraphQLClient("http://localhost:3000/api/graphql");
+
+const endpoint = process.env.NEXT_PUBLIC_SITE_URL + "/api/graphql";
+export const client = new GraphQLClient(endpoint);
 
 export default async function GraphQLPage() {
     const query = `
